@@ -1,12 +1,12 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = class DepthCalculator {
-  calculateDepth(arr, depthLevel = ["array"]) {
+  calculateDepth(arr, countLevel = ["1"]) {
     if (arr.some((elem) => Array.isArray(elem))) {
-      arr = arr.flat(); // remove one level of array depth
-      depthLevel.push("depth++"); // depth level + 1
-      this.calculateDepth(arr, depthLevel);
+      arr = arr.flat();
+      countLevel.push("+1");
+      this.calculateDepth(arr, countLevel);
     }
-    return depthLevel.length;
+    return countLevel.length;
   }
 };
